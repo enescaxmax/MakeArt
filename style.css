@@ -297,8 +297,13 @@ main {
 
 .testimonial-card .stars {
     color: #ffc107;
-    font-size: 1.2rem;
     margin-bottom: 1rem;
+    font-size: 0; /* hide corrupted text */
+}
+.testimonial-card .stars::before {
+    content: '★★★★★'; /* 5 solid stars */
+    font-size: 1.2rem;
+    letter-spacing: 2px;
 }
 
 .testimonial-card p {
@@ -326,3 +331,47 @@ footer {
     color: #fff;
     margin-top: 2rem;
 }
+
+/* Responsive helpers and global adjustments (add to end of file) */
+/* Container */
+.container, .content { max-width: 1200px; margin: 0 auto; padding: 0 16px; box-sizing: border-box; }
+
+/* Header / Nav */
+header nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 12px 0; }
+header nav .logo { font-weight: 700; }
+header nav ul { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; }
+header nav ul li a { display: block; padding: 8px 6px; }
+
+/* Typography scaling */
+h1 { font-size: clamp(1.6rem, 3.5vw, 2.8rem); margin: .4em 0; }
+h2 { font-size: clamp(1.25rem, 2.5vw, 2rem); margin: .4em 0; }
+p, li, a { font-size: clamp(0.95rem, 1.6vw, 1rem); line-height: 1.5; }
+
+/* Images and iframes */
+img, iframe { max-width: 100%; height: auto; display: block; }
+
+/* Forms and controls */
+input, textarea, select, button { font-size: 1rem; padding: 10px; border-radius: 6px; box-sizing: border-box; }
+button.cta-button { cursor: pointer; }
+
+/* Footer spacing */
+footer { padding: 24px 0; text-align: center; }
+
+/* Contact page fallback (in case inline styles differ) */
+.contact-grid { display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap; }
+.contact-form, .info-map { flex: 0 0 45%; min-width: 280px; display: flex; flex-direction: column; }
+
+/* Map sizing */
+.map-wrapper { min-height: 200px; }
+
+/* Small screens */
+@media (max-width: 800px) {
+  header nav { padding: 10px 0; }
+  header nav ul { width: 100%; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .contact-grid { flex-direction: column; gap: 20px; }
+  .contact-form, .info-map { flex: 1 1 100%; }
+  .map-wrapper { min-height: 250px; }
+}
+
+/* Accessibility focus */
+a:focus, button:focus, input:focus, textarea:focus { outline: 3px solid rgba(0,120,212,0.18); outline-offset: 2px; }

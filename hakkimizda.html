@@ -1,44 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | caxmax</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | caxmax</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Page-specific refinements */
+    .about-hero{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      padding:3.5rem 1rem;
+      background:linear-gradient(180deg, rgba(0,123,255,0.05), rgba(0,0,0,0.02));
+      border-radius:10px;
+      margin-bottom:1.5rem;
+    }
+    .about-hero .eyebrow{ color:#007bff; font-weight:700; font-size:0.95rem; }
+    .about-hero h1{ margin:0 0 .5rem 0; font-size:clamp(1.6rem,3vw,2.4rem); }
+    .about-hero p{ margin:0; color:#444; max-width:700px; }
+
+    .about-container { display:flex; gap:2.5rem; align-items:center; flex-wrap:wrap; margin-bottom:2rem; }
+    .about-image img{ width:100%; border-radius:10px; height:100%; object-fit:cover; box-shadow:0 8px 30px rgba(0,0,0,0.08); }
+
+    .stats { display:flex; gap:20px; margin-top:1rem; flex-wrap:wrap; }
+    .stat { background:#fff; padding:16px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06); min-width:140px; text-align:center; }
+    .stat strong{ display:block; font-size:1.4rem; color:#007bff; }
+    .stat span{ color:#666; font-size:0.95rem; }
+
+    .team { margin-top:2rem; }
+    .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1rem; }
+    .team-card { background:#fff; padding:1rem; border-radius:8px; text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+    .team-card img { width:88px; height:88px; border-radius:50%; object-fit:cover; margin-bottom:0.75rem; border:3px solid #007bff; }
+
+    .lead-cta { margin-top:1.5rem; display:inline-block; background:#007bff; color:#fff; padding:0.75rem 1.25rem; border-radius:8px; text-decoration:none; font-weight:600; }
+
+    @media (max-width: 900px) {
+      .about-container, .about-hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about-image{ 
+        order: -1;
+        max-width: 100%;
+        width: 100%;
+       }
+    }
+
+    footer {
+        background: #141E30;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color: #ecf0f1;
+        padding: 60px 20px;
+    }
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    footer h4 {
+        color: #fff;
+        margin-bottom: 20px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+    footer a {
+        color: #bdc3c7;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    footer a:hover {
+        color: #3498db;
+    }
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+    }
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+    .footer-tagline h4 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #bdc3c7;
+        line-height: 1.5;
+    }
+    .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+        border-top: 1px solid #34495e;
+        padding-top: 30px;
+        color: #95a5a6;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html" class="logo">caxmax</a>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="hakkimizda.html">About Us</a></li>
-                <li><a href="hizmetlerimiz.html">Services</a></li>
-                <li><a href="iletisim.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">caxmax</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hakkimizda.html">About Us</a></li>
+        <li><a href="hizmetlerimiz.html">Services</a></li>
+        <li><a href="iletisim.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <section class="content">
-            <h2>About Us</h2>
-            <div class="about-container">
-                <div class="about-text">
-                    <h3>Our Mission & Vision</h3>
-                    <p>At caxmax, we leverage our deep industry experience and expert team to provide tailored solutions for businesses. Our mission is to develop innovative and sustainable strategies that enable our clients to achieve their goals.</p>
-                    <p>Our vision is to be a trusted, pioneering, and inspiring brand in the consulting industry. We aim to build long-lasting partnerships by always prioritizing client satisfaction.</p>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="Office Environment">
-                </div>
-            </div>
-        </section>
-    </main>
+  <main>
+    <section class="content">
+      <div class="about-hero">
+        <div style="flex:1">
+          <div class="eyebrow">WHO WE ARE</div>
+          <h1>We help businesses grow with clear strategy & operational excellence</h1>
+          <p>caxmax combines industry expertise, data-driven analysis and hands-on execution to deliver sustainable results for startups and enterprises. We focus on measurable outcomes: revenue growth, cost optimization and customer satisfaction.</p>
+          <a class="lead-cta" href="iletisim.html">Get in touch</a>
+        </div>
+        <div style="width:360px; max-width:40%;" class="about-image">
+          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1400&auto=format&fit=crop" alt="Team collaboration">
+        </div>
+      </div>
+
+      <div class="about-container">
+        <div class="about-text">
+          <h3>Our Mission</h3>
+          <p>We partner with leaders to design practical strategies and implement them end-to-end. Our team blends consulting rigor with operational experience so recommendations are executable and deliver value fast.</p>
+
+          <div class="stats" aria-hidden="false">
+            <div class="stat"><strong>10+</strong><span>Years experience</span></div>
+            <div class="stat"><strong>120+</strong><span>Projects delivered</span></div>
+            <div class="stat"><strong>95%</strong><span>Client satisfaction</span></div>
+          </div>
+
+          <h3 style="margin-top:1.5rem;">What we do</h3>
+          <ul>
+            <li><a href="hizmetlerimiz.html#salesforce">Salesforce Consulting</a> — Implement, customize and integrate Salesforce to accelerate sales, service and marketing performance.</li>
+            <li><a href="hizmetlerimiz.html#sdet">SDET &amp; Test Automation</a> — End‑to‑end quality engineering and automation frameworks integrated into your CI/CD.</li>
+            <li><a href="hizmetlerimiz.html#cloud">Cloud Solutions</a> — Seamless cloud migration, optimization and managed operations for scalability and efficiency.</li>
+            <li><a href="hizmetlerimiz.html#ai-ml">AI &amp; Machine Learning</a> — Custom models and data pipelines to drive innovation and smarter decisions.</li>
+            <li><a href="hizmetlerimiz.html#cybersecurity">Cybersecurity</a> — Proactive security assessments, detection and response to protect digital assets.</li>
+          </ul>
+        </div>
+
+        <div class="about-image" style="flex:0 0 380px;">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop" alt="Office view">
+        </div>
+      </div>
+
+      <section class="team" aria-labelledby="team-heading">
+        <h3 id="team-heading">Our Team</h3>
+                <div class="team-grid">
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/Alexia Turner.jpg" alt="Alexia Turner" onerror="this.onerror=null;this.src='https://via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>Alexia Turner</strong>
+            <div style="color:#666;font-size:0.95rem">Principal Consultant • Product Owner</div>
+          </div>
+
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/Liam Carter.jpg" alt="Liam Carter" onerror="this.onerror=null;this.src='https://via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>Liam Carter</strong>
+            <div style="color:#666;font-size:0.95rem">Cloud Solutions Architect</div>
+          </div>
+
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/Ava Johnson.png" alt="Ava Johnson" onerror="this.onerror=null;this.src='https://via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>Ava Johnson</strong>
+            <div style="color:#666;font-size:0.95rem">AI/ML Engineer • MLOps</div>
+          </div>
+
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/Sofia Martinez.png" alt="Sofia Martinez" onerror="this.onerror=null;this.src='https://via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>Sofia Martinez</strong>
+            <div style="color:#666;font-size:0.95rem">Salesforce Consultant • Lightning/Apex</div>
+          </div>
+
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/Noah Williams.png" alt="Noah Williams" onerror="this.onerror=null;this.src='https.via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>Noah Williams</strong>
+            <div style="color:#666;font-size:0.95rem">DevOps/SRE Lead • CI/CD</div>
+          </div>
+
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/Mia Rown.png" alt="Mia Rown" onerror="this.onerror=null;this.src='https://via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>Mia Rown</strong>
+            <div style="color:#666;font-size:0.95rem">QA Automation Engineer (SDET)</div>
+          </div>
+
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/Lucas Nguyen.png" alt="Lucas Nguyen" onerror="this.onerror=null;this.src='https://via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>Lucas Nguyen</strong>
+            <div style="color:#666;font-size:0.95rem">Data Engineer • Feature Pipelines</div>
+          </div>
+
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/Emma Davis.png" alt="Emma Davis" onerror="this.onerror=null;this.src='https://via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>Emma Davis</strong>
+            <div style="color:#666;font-size:0.95rem">Scrum Master • Delivery Manager</div>
+          </div>
+
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/Ethan Brooks.png" alt="Ethan Brooks" onerror="this.onerror=null;this.src='https://via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>Ethan Brooks</strong>
+            <div style="color:#666;font-size:0.95rem">Security Engineer • Zero Trust</div>
+          </div>
+
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/Oliver Zhang.png" alt="Oliver Zhang" onerror="this.onerror=null;this.src='https://via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>Oliver Zhang</strong>
+            <div style="color:#666;font-size:0.95rem">FinOps Analyst • Cloud Cost</div>
+          </div>
+
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/Grace Patel.png" alt="Grace Patel" onerror="this.onerror=null;this.src='https://via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>Grace Patel</strong>
+            <div style="color:#666;font-size:0.95rem">Agile Coach • People Ops</div>
+          </div>
+          
+          <div class="team-card">
+            <img loading="lazy" src="assets/team/George Timber.png" alt="George Timber" onerror="this.onerror=null;this.src='https://via.placeholder.com/88x88.png?text=Avatar'">
+            <strong>George Timber</strong>
+            <div style="color:#666;font-size:0.95rem">CRM & Marketing Cloud Specialist</div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
 
     <footer>
-        <p>&copy; 2025 caxmax. All rights reserved.</p>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h4>caxmax</h4>
+                <p>Your partner in digital transformation and strategic growth. We deliver data-driven results that matter.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hakkimizda.html">About Us</a></li>
+                    <li><a href="hizmetlerimiz.html">Services</a></li>
+                    <li><a href="iletisim.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-tagline">
+                <h4>Shaping Tomorrow's Success, Together.</h4>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 caxmax. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Start of Tawk.to Script -->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/68c726a3312e381925a2020b/1j54utsc9';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script>
+  <!-- End of Tawk.to Script -->
 </body>
 </html>

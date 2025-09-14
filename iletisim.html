@@ -3,8 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | caxmax</title>
+    <title>Contact | caxmax</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+      /* Layout: make form and info+map equal height and sit side-by-side */
+      .contact-grid { display:flex; gap:24px; align-items:stretch; flex-wrap:wrap; }
+      .contact-form, .info-map { flex: 1 1 400px; display:flex; flex-direction:column; }
+      /* Make the form fill its container height */
+      .contact-form h3 { margin-top:0; }
+      .contact-form form { display:flex; flex-direction:column; gap:12px; flex:1; }
+      .contact-form form input,
+      .contact-form form textarea { width:100%; box-sizing:border-box; }
+      .contact-form form textarea { resize:vertical; min-height:80px; }
+      .contact-form .cta-button { align-self:flex-start; }
+
+      /* Info + map column layout */
+      .info-map { gap:16px; }
+      .contact-info { background:#fafafa; padding:16px; border-radius:6px; }
+      .contact-info h3 { margin-top:0; }
+
+      /* Map should expand to fill remaining vertical space so the two columns match height */
+      .map-wrapper { flex:1 1 auto; min-height:200px; border-radius:6px; overflow:hidden; }
+      .map-wrapper iframe { width:100%; height:100%; border:0; display:block; }
+
+      .note { font-size:0.9rem; color:#666; margin-top:8px; }
+
+      @media (max-width:800px){
+        .contact-grid, .info-map { flex-direction:column; }
+        .map-wrapper { min-height:250px; }
+      }
+
+        footer {
+            background: #141E30;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: #ecf0f1;
+            padding: 60px 20px;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        footer h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        footer a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #3498db;
+        }
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-tagline h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #bdc3c7;
+            line-height: 1.5;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #34495e;
+            padding-top: 30px;
+            color: #95a5a6;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -20,38 +97,88 @@
     </header>
 
     <main>
-        <section class="content">
+        <section class="content contact-page">
             <h2>Contact Us</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p><strong>Address:</strong> Example District, Consultant Street No:123, Istanbul</p>
-                    <p><strong>Phone:</strong> +90 555 123 45 67</p>
-                    <p><strong>Email:</strong> contact@caxmax.com</p>
-                </div>
+            <p class="lead">Use the live chat at the bottom-right for immediate support, or fill out the form below — we typically reply within 24 hours.</p>
+
+            <div class="contact-grid">
                 <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form action="#" method="POST">
-                        <label for="name">Your Name:</label>
-                        <input type="text" id="name" name="name" required>
-                        
-                        <label for="email">Your Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        
-                        <label for="message">Your Message:</label>
-                        <textarea id="message" name="message" rows="6" required></textarea>
-                        
+                    <h3>Send a Message</h3>
+                    <form id="contactForm" action="#" method="POST">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="name@example.com" required>
+
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Write your message..." required></textarea>
+
                         <button type="submit" class="cta-button">Send</button>
+
+                        <p class="note">Prefer instant help? Start a chat from the bottom-right corner.</p>
                     </form>
+                </div>
+
+                <div class="info-map">
+                    <aside class="contact-info">
+                        <h3>Contact Information</h3>
+                        <p><strong>Email:</strong> <a href="mailto:enescaxmax@gmail.com">enescaxmax@gmail.com</a></p>
+                        <p><strong>Business Hours:</strong> Mon–Fri, 09:00–18:00</p>
+                        <p><strong>Address:</strong> 8 The Green, STE B, Dover, Delaware, 19901 United States</p>
+                    </aside>
+
+                    <div class="map-wrapper" aria-label="Location map">
+                        <iframe
+                          src="https://www.google.com/maps?q=8+The+Green+STE+B+Dover+DE+19901&output=embed"
+                          loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"
+                          title="caxmax location"></iframe>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 caxmax. All rights reserved.</p>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h4>caxmax</h4>
+                <p>Your partner in digital transformation and strategic growth. We deliver data-driven results that matter.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hakkimizda.html">About Us</a></li>
+                    <li><a href="hizmetlerimiz.html">Services</a></li>
+                    <li><a href="iletisim.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-tagline">
+                <h4>Shaping Tomorrow's Success, Together.</h4>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 caxmax. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Start of Tawk.to Script -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68c726a3312e381925a2020b/1j54utsc9';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!-- End of Tawk.to Script -->
+
 </body>
 </html>

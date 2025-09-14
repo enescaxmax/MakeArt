@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,254 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .hero {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px;
+            color: #fff;
+            overflow: hidden;
+            min-height: 60vh;
+        }
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .hero-background .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+        }
+        .hero-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+            flex-wrap: wrap;
+        }
+        .feature-card {
+            text-align: center;
+            max-width: 300px;
+            margin: 20px;
+        }
+        .feature-card img, .feature-card svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        .services-section {
+            padding: 50px 20px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            cursor: pointer;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+        }
+        .clients-section {
+            padding: 50px 0;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .cta-section {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Testimonial Slider Styles */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-350px * 6)); }
+        }
+        .testimonials {
+            padding: 50px 0;
+        }
+        .testimonial-slider {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .testimonial-track {
+            display: flex;
+            width: calc(350px * 12);
+            animation: scroll 40s linear infinite;
+        }
+        .testimonial-slider:hover .testimonial-track {
+            animation-play-state: paused;
+        }
+        .testimonial-card {
+            flex-shrink: 0;
+            width: 320px;
+            margin: 0 15px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .testimonial-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        /* Client Logo Slider */
+        @keyframes scroll-right {
+            100% { transform: translateX(0); }
+            0% { transform: translateX(calc(-200px * 12)); }
+        }
+        .client-logo-slider {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            margin-top: 30px;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .client-logo-track {
+            display: flex;
+            align-items: center;
+            width: calc(200px * 24);
+            animation: scroll-right 60s linear infinite;
+        }
+        .client-logo-slider:hover .client-logo-track {
+            animation-play-state: paused;
+        }
+        .client-logo-track svg {
+            height: 40px;
+            width: 160px;
+            margin: 0 20px;
+            fill: #888;
+            opacity: 0.8;
+            transition: opacity 0.3s, fill 0.3s;
+        }
+        .client-logo-track svg:hover {
+            opacity: 1;
+            fill: #333;
+        }
+
+        footer {
+            background: #141E30;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: #ecf0f1;
+            padding: 60px 20px;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        footer h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        footer a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #3498db;
+        }
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-tagline h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #bdc3c7;
+            line-height: 1.5;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #34495e;
+            padding-top: 30px;
+            color: #95a5a6;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            .testimonial-track {
+                animation-duration: 30s;
+            }
+            .client-logo-track {
+                animation-duration: 45s;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -24,49 +272,396 @@
 
     <main>
         <section class="hero">
-            <h1>Professional Consulting Solutions</h1>
-            <p>We stand by you with strategies that will carry your business to the future.</p>
-            <a href="hizmetlerimiz.html" class="cta-button">Discover Our Services</a>
+            <div class="hero-background">
+                <div class="video-overlay"></div>
+                <video playsinline autoplay muted loop poster="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop">
+                    <source src="assets/team/slider%20video1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="hero-content">
+                <h1>Drive Growth with Expert Consulting</h1>
+                <p>We partner with businesses to unlock their potential through strategic insights and data-driven solutions.</p>
+                <a href="hizmetlerimiz.html" class="cta-button">Explore Our Services</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <svg viewBox="0 0 100 100" role="img" aria-label="Strategic Expertise icon" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="#007bff" stroke-width="6" />
+                  <circle cx="50" cy="50" r="30" fill="none" stroke="#007bff" stroke-width="6" opacity="0.6" />
+                  <circle cx="50" cy="50" r="15" fill="#007bff" />
+                  <path d="M80 20 L92 8 M92 20 L92 8 L80 8" stroke="#007bff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>Strategic Expertise</h3>
+                <p>Leverage our deep industry knowledge to build a roadmap for sustainable growth and a competitive edge.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://img.icons8.com/ios-filled/100/007bff/line-chart.png" alt="Data-Driven Results"/>
+                <h3>Data-Driven Results</h3>
+                <p>We use advanced analytics to uncover opportunities, optimize performance, and deliver measurable outcomes.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://img.icons8.com/ios-filled/100/007bff/people-working-together.png" alt="Client-Centric Approach"/>
+                <h3>Client-Centric Approach</h3>
+                <p>Your success is our priority. We work as an extension of your team to provide tailored solutions and dedicated support.</p>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <h2 class="section-title">Our Core Services</h2>
+            <div class="services-grid">
+                <a class="service-card" href="hizmetlerimiz.html#cloud">
+                    <h3>Cloud Solutions</h3>
+                    <p>Seamless cloud migration, optimization, and management to enhance scalability and efficiency.</p>
+                </a>
+                <a class="service-card" href="hizmetlerimiz.html#ai-ml">
+                    <h3>AI & Machine Learning</h3>
+                    <p>Unlock the power of your data with custom AI models that drive innovation and smarter decisions.</p>
+                </a>
+                <a class="service-card" href="hizmetlerimiz.html#cybersecurity">
+                    <h3>Cybersecurity</h3>
+                    <p>Protect your digital assets with robust, proactive security strategies and threat mitigation.</p>
+                </a>
+                <a class="service-card" href="hizmetlerimiz.html#salesforce">
+                    <h3>Salesforce Consulting</h3>
+                    <p>Implement, customize, and integrate Salesforce to accelerate sales, service, and marketing performance.</p>
+                </a>
+                <a class="service-card" href="hizmetlerimiz.html#sdet">
+                    <h3>SDET & Test Automation</h3>
+                    <p>Quality engineering and automation frameworks integrated into CI/CD for reliable, fast releases.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="clients-section">
+            <h2 class="section-title">Trusted by Industry Leaders</h2>
+            <div class="client-logo-slider">
+                <div class="client-logo-track">
+                    <!-- Set 1: refined minimal marks -->
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 28 L24 12 L36 28 Z"/>
+                        <circle cx="60" cy="20" r="12"/>
+                        <path d="M88 28 L100 12 L112 28"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="10" y="10" width="20" height="20" rx="5"/>
+                        <path d="M45 28 C 52 10, 68 10, 75 28"/>
+                        <path d="M90 10 V 30 M100 10 V 30 M110 10 V 30"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 22 Q 30 6 50 22 T 90 22"/>
+                        <circle cx="100" cy="20" r="6"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 12 H50 L30 28 H70"/>
+                        <path d="M82 28 L106 20 L82 12 Z"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="20" cy="20" r="9"/>
+                        <path d="M40 12 L60 28 M60 12 L40 28"/>
+                        <rect x="80" y="10" width="30" height="20" rx="4"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 28 C 25 12, 35 28, 50 12 S 75 28, 90 12"/>
+                        <path d="M100 12 H110 V28 H100 Z"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 28 L30 12 L50 28 L70 12 L90 28"/>
+                        <path d="M100 20 L110 12 M100 20 L110 28"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="10" y="10" width="20" height="20"/>
+                        <path d="M40 20 H60"/>
+                        <circle cx="85" cy="20" r="9"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 12 L30 28 M30 12 L10 28"/>
+                        <path d="M50 12 V28 M40 20 H60"/>
+                        <path d="M80 12 H100 L90 28 H110"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="10" y="10" width="20" height="20"/>
+                        <path d="M40 12 L60 12 L40 28 L60 28"/>
+                        <path d="M80 12 L100 28 L80 28 Z"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="20" cy="20" r="9"/>
+                        <path d="M40 12 L60 12 L50 28 Z"/>
+                        <path d="M80 12 L110 12 L95 28 Z"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 12 L30 12 L20 28 Z"/>
+                        <path d="M40 12 L60 28 L40 28 Z"/>
+                        <path d="M80 12 L100 12 L90 28 Z"/>
+                      </g>
+                    </svg>
+                    <!-- Set 2: duplicate for seamless loop -->
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 28 L24 12 L36 28 Z"/>
+                        <circle cx="60" cy="20" r="12"/>
+                        <path d="M88 28 L100 12 L112 28"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="10" y="10" width="20" height="20" rx="5"/>
+                        <path d="M45 28 C 52 10, 68 10, 75 28"/>
+                        <path d="M90 10 V 30 M100 10 V 30 M110 10 V 30"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 22 Q 30 6 50 22 T 90 22"/>
+                        <circle cx="100" cy="20" r="6"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 12 H50 L30 28 H70"/>
+                        <path d="M82 28 L106 20 L82 12 Z"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="20" cy="20" r="9"/>
+                        <path d="M40 12 L60 28 M60 12 L40 28"/>
+                        <rect x="80" y="10" width="30" height="20" rx="4"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 28 C 25 12, 35 28, 50 12 S 75 28, 90 12"/>
+                        <path d="M100 12 H110 V28 H100 Z"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 28 L30 12 L50 28 L70 12 L90 28"/>
+                        <path d="M100 20 L110 12 M 100 20 L110 28"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="10" y="10" width="20" height="20"/>
+                        <path d="M40 20 H60"/>
+                        <circle cx="85" cy="20" r="9"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 12 L30 28 M30 12 L10 28"/>
+                        <path d="M50 12 V28 M40 20 H60"/>
+                        <path d="M80 12 H100 L90 28 H110"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="10" y="10" width="20" height="20"/>
+                        <path d="M40 12 L60 12 L40 28 L60 28"/>
+                        <path d="M80 12 L100 28 L80 28 Z"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="20" cy="20" r="9"/>
+                        <path d="M40 12 L60 12 L50 28 Z"/>
+                        <path d="M80 12 L110 12 L95 28 Z"/>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 12 L30 12 L20 28 Z"/>
+                        <path d="M40 12 L60 28 L40 28 Z"/>
+                        <path d="M80 12 L100 12 L90 28 Z"/>
+                      </g>
+                    </svg>
+                </div>
+            </div>
         </section>
 
         <section class="testimonials">
             <h2 class="section-title">What Our Clients Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client photo">
-                    <div class="stars">
-                        ★★★★★
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"Their expertise in cloud solutions transformed our infrastructure."</p>
+                        <h4>Sarah L.</h4>
+                        <span>CTO, Tech Innovators</span>
                     </div>
-                    <p>"Their expertise in cloud solutions transformed our infrastructure. The migration was seamless and performance has never been better."</p>
-                    <h4>Sarah L.</h4>
-                    <span>CTO, Tech Innovators</span>
-                </div>
-                <div class="testimonial-card">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client photo">
-                    <div class="stars">
-                        ★★★★★
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"The AI insights gave us a significant competitive edge. Truly game-changing."</p>
+                        <h4>Michael B.</h4>
+                        <span>Head of R&D, Future Dynamics</span>
                     </div>
-                    <p>"The AI and Machine Learning insights provided by caxmax gave us a significant competitive edge. Truly game-changing."</p>
-                    <h4>Michael B.</h4>
-                    <span>Head of R&D, Future Dynamics</span>
-                </div>
-                <div class="testimonial-card">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client photo">
-                    <div class="stars">
-                        ★★★★★
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"Their team implemented a robust security strategy that gives us complete peace of mind."</p>
+                        <h4>Jessica P.</h4>
+                        <span>CEO, SecureNet</span>
                     </div>
-                    <p>"Cybersecurity is critical for us. Their team implemented a robust strategy that gives us complete peace of mind."</p>
-                    <h4>Jessica P.</h4>
-                    <span>CEO, SecureNet</span>
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"The operational efficiency improvements were incredible. Our supply chain has never been smoother."</p>
+                        <h4>David Chen</h4>
+                        <span>COO, Global Logistics</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"As a new business, their strategic guidance was invaluable. We launched with a clear and effective market strategy."</p>
+                        <h4>Maria Garcia</h4>
+                        <span>Founder, Creative Startup</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"Their financial consulting provided the clarity we needed to secure our Series B funding. A truly professional team."</p>
+                        <h4>Tom Iwata</h4>
+                        <span>CFO, FinTech Corp</span>
+                    </div>
+                    <!-- Duplicates for infinite loop -->
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"Their expertise in cloud solutions transformed our infrastructure."</p>
+                        <h4>Sarah L.</h4>
+                        <span>CTO, Tech Innovators</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"The AI insights gave us a significant competitive edge. Truly game-changing."</p>
+                        <h4>Michael B.</h4>
+                        <span>Head of R&D, Future Dynamics</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"Their team implemented a robust security strategy that gives us complete peace of mind."</p>
+                        <h4>Jessica P.</h4>
+                        <span>CEO, SecureNet</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"The operational efficiency improvements were incredible. Our supply chain has never been smoother."</p>
+                        <h4>David Chen</h4>
+                        <span>COO, Global Logistics</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"As a new business, their strategic guidance was invaluable. We launched with a clear and effective market strategy."</p>
+                        <h4>Maria Garcia</h4>
+                        <span>Founder, Creative Startup</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Client photo">
+                        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+                        <p>"Their financial consulting provided the clarity we needed to secure our Series B funding. A truly professional team."</p>
+                        <h4>Tom Iwata</h4>
+                        <span>CFO, FinTech Corp</span>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to unlock your business potential?</h2>
+            <p>Let's discuss how our tailored consulting services can help you achieve your goals.</p>
+            <a href="iletisim.html" class="cta-button">Get in Touch</a>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 caxmax. All rights reserved.</p>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h4>caxmax</h4>
+                <p>Your partner in digital transformation and strategic growth. We deliver data-driven results that matter.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hakkimizda.html">About Us</a></li>
+                    <li><a href="hizmetlerimiz.html">Services</a></li>
+                    <li><a href="iletisim.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-tagline">
+                <h4>Shaping Tomorrow's Success, Together.</h4>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 caxmax. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const video = document.querySelector('.hero-background video');
+        if (video) {
+            // Attempt to play the video
+            var playPromise = video.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Autoplay started!
+                }).catch(error => {
+                    // Autoplay was prevented.
+                    console.log("Video autoplay was prevented. Error: ", error);
+                });
+            }
+        }
+    });
+    </script>
+
+    <!-- Start of Tawk.to Script -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68c726a3312e381925a2020b/1j54utsc9';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!-- End of Tawk.to Script -->
+
 </body>
 </html>
+

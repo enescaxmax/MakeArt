@@ -4,8 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | caxmax</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .services-page-header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+        }
+        .services-page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        .service-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .service-section.hidden {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .service-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .service-image, .service-details {
+            flex: 1;
+            min-width: 300px;
+        }
+        .service-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .service-details h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+        .service-details ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+        .service-details ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+        .service-details ul li::before {
+            content: '\2713'; /* Checkmark character */
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .service-section, .service-section:nth-child(even) {
+                flex-direction: column;
+                gap: 30px;
+                padding: 40px 20px;
+            }
+            .service-details h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        footer {
+            background: #141E30;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: #ecf0f1;
+            padding: 60px 20px;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        footer h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        footer a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #3498db;
+        }
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-tagline h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #bdc3c7;
+            line-height: 1.5;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #34495e;
+            padding-top: 30px;
+            color: #95a5a6;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,37 +139,149 @@
     </header>
 
     <main>
-        <section class="content">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Strategic Management Consulting</h3>
-                    <p>We define a roadmap for your company to achieve its long-term goals, guiding you through strategic planning and implementation.</p>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Operational Efficiency</h3>
-                    <p>We analyze your business processes to offer solutions that increase efficiency, reduce costs, and ensure operational excellence.</p>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Financial Consulting</h3>
-                    <p>We are here to strengthen your financial health, optimize investment decisions, and ensure sustainable growth.</p>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-users"></i>
-                    <h3>Human Resources Management</h3>
-                    <p>We provide support to attract the right talent, increase employee motivation, and create modern HR strategies.</p>
-                </div>
+        <section class="services-page-header">
+            <h1>Our Services</h1>
+            <p class="lead">Driving excellence and growth through tailored consulting solutions.</p>
+        </section>
+
+        <!-- Salesforce Consulting -->
+        <section id="salesforce" class="service-section">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Salesforce Consulting" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/illustrations/salesforce.svg';">
+            </div>
+            <div class="service-details">
+                <h3>Salesforce Consulting</h3>
+                <p>Implement, customize, and integrate Salesforce to accelerate sales, service, and marketing performance.</p>
+                <ul>
+                    <li>Implementation, org setup & data migration</li>
+                    <li>Sales Cloud, Service Cloud, Marketing Cloud</li>
+                    <li>Apex, Lightning, Flow automation</li>
+                    <li>Integrations (MuleSoft/API) & enablement</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SDET & Test Automation -->
+        <section id="sdet" class="service-section">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2070&auto=format&fit=crop" alt="SDET & Test Automation" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/illustrations/sdet.svg';">
+            </div>
+            <div class="service-details">
+                <h3>SDET & Test Automation</h3>
+                <p>End-to-end quality engineering and automation frameworks integrated into your CI/CD for reliable releases.</p>
+                <ul>
+                    <li>UI automation (Selenium, Playwright, Appium)</li>
+                    <li>API & performance (Postman, k6, JMeter)</li>
+                    <li>CI/CD integration, reporting & analytics</li>
+                    <li>QA strategy, TDD/BDD, shift-left</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="cloud" class="service-section">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2069&auto=format&fit=crop" alt="Cloud Solutions">
+            </div>
+            <div class="service-details">
+                <h3>Cloud Solutions</h3>
+                <p>Seamless cloud migration, optimization, and management to enhance scalability and efficiency.</p>
+                <ul>
+                    <li>Cloud migration & application modernization</li>
+                    <li>Cost optimization (FinOps) & autoscaling</li>
+                    <li>Multi-cloud architecture & security baselines</li>
+                    <li>Managed cloud operations (SRE)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="ai-ml" class="service-section">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop" alt="AI & Machine Learning" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/illustrations/ai-ml.svg';">
+            </div>
+            <div class="service-details">
+                <h3>AI & Machine Learning</h3>
+                <p>Unlock the power of your data with custom AI models that drive innovation and smarter decisions.</p>
+                <ul>
+                    <li>Predictive analytics & forecasting</li>
+                    <li>Computer vision & natural language</li>
+                    <li>MLOps, model serving & monitoring</li>
+                    <li>Data engineering & feature pipelines</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="cybersecurity" class="service-section">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f?q=80&w=2070&auto=format&fit=crop" alt="Cybersecurity" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/illustrations/cybersecurity.svg';">
+            </div>
+            <div class="service-details">
+                <h3>Cybersecurity</h3>
+                <p>Protect your digital assets with robust, proactive security strategies and threat mitigation.</p>
+                <ul>
+                    <li>Security assessments & hardening</li>
+                    <li>Threat detection, SIEM & response</li>
+                    <li>Zero Trust, IAM & endpoint protection</li>
+                    <li>Incident response & recovery playbooks</li>
+                </ul>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 caxmax. All rights reserved.</p>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h4>caxmax</h4>
+                <p>Your partner in digital transformation and strategic growth. We deliver data-driven results that matter.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hakkimizda.html">About Us</a></li>
+                    <li><a href="hizmetlerimiz.html">Services</a></li>
+                    <li><a href="iletisim.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-tagline">
+                <h4>Shaping Tomorrow's Success, Together.</h4>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 caxmax. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('hidden');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.service-section').forEach(section => {
+            section.classList.add('hidden');
+            observer.observe(section);
+        });
+    });
+    </script>
+
+    <!-- Start of Tawk.to Script -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68c726a3312e381925a2020b/1j54utsc9';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!-- End of Tawk.to Script -->
+
 </body>
 </html>
